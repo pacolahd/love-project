@@ -32,7 +32,7 @@ export default function FloatingArtifact({
       scale: 1,
       x: position === "left" ? -130 : 70,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 15,
         delay,
@@ -48,17 +48,17 @@ export default function FloatingArtifact({
       y: {
         duration: 1.5,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
       rotate: {
         duration: 2,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
       scale: {
         duration: 1.2,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   };
