@@ -6,8 +6,7 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 
 export type BrochurePage =
-  | "cover"
-  | "giftSelection"
+  | "envelope"
   | "gospel"
   | "purity"
   | "share";
@@ -18,7 +17,7 @@ interface UseBrochureProps {
 }
 
 export function useBrochure({ senderName, receiverName }: UseBrochureProps) {
-  const [currentPage, setCurrentPage] = useState<BrochurePage>("cover");
+  const [currentPage, setCurrentPage] = useState<BrochurePage>("envelope");
   const [visitId, setVisitId] = useState<Id<"visits"> | null>(null);
   const [direction, setDirection] = useState<"forward" | "backward">("forward");
   const [isFollowUpModalOpen, setIsFollowUpModalOpen] = useState(false);
@@ -79,11 +78,9 @@ export function useBrochure({ senderName, receiverName }: UseBrochureProps) {
 
   const goBack = useCallback(() => {
     if (currentPage === "gospel" || currentPage === "purity") {
-      goToPage("giftSelection", "backward");
-    } else if (currentPage === "giftSelection") {
-      goToPage("cover", "backward");
+      goToPage("envelope", "backward");
     } else if (currentPage === "share") {
-      goToPage("giftSelection", "backward");
+      goToPage("envelope", "backward");
     }
   }, [currentPage, goToPage]);
 

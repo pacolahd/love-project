@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
 import FollowUpForm from "../forms/FollowUpForm";
+import LetterPage from "./LetterPage";
 import { Id } from "@/convex/_generated/dataModel";
 
 interface GospelPageProps {
@@ -27,14 +28,14 @@ export default function GospelPage({
 }: GospelPageProps) {
   return (
     <>
-      <div className="flex flex-col min-h-[600px] md:min-h-[700px] p-6 md:p-8 overflow-y-auto">
+      <LetterPage>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="flex-1"
         >
           <div className="text-center mb-6">
-            <span className="text-4xl" role="img" aria-label="cross">
+            <span className="text-4xl" role="img" aria-label="cross" style={{ color: "#d4a574" }}>
               &#10013;
             </span>
             <h2 className="text-2xl md:text-3xl font-serif text-foreground mt-2">
@@ -43,7 +44,7 @@ export default function GospelPage({
           </div>
 
           <div className="prose prose-rose max-w-none text-foreground/80 space-y-4">
-            <p className="text-lg">
+            <p className="text-xl font-handwritten text-rose-dark">
               Dear {receiverName},
             </p>
 
@@ -102,7 +103,7 @@ export default function GospelPage({
             </div>
           </motion.div>
         </motion.div>
-      </div>
+      </LetterPage>
 
       <Modal
         isOpen={isFollowUpModalOpen}

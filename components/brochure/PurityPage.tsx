@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
 import FollowUpForm from "../forms/FollowUpForm";
+import LetterPage from "./LetterPage";
 import { Id } from "@/convex/_generated/dataModel";
 
 interface PurityPageProps {
@@ -27,7 +28,7 @@ export default function PurityPage({
 }: PurityPageProps) {
   return (
     <>
-      <div className="flex flex-col min-h-[600px] md:min-h-[700px] p-6 md:p-8 overflow-y-auto">
+      <LetterPage>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -43,7 +44,7 @@ export default function PurityPage({
           </div>
 
           <div className="prose prose-rose max-w-none text-foreground/80 space-y-4">
-            <p className="text-lg">
+            <p className="text-xl font-handwritten text-rose-dark">
               Dear {receiverName},
             </p>
 
@@ -107,7 +108,7 @@ export default function PurityPage({
             </div>
           </motion.div>
         </motion.div>
-      </div>
+      </LetterPage>
 
       <Modal
         isOpen={isFollowUpModalOpen}

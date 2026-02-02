@@ -4,8 +4,7 @@ import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useBrochure } from "@/hooks/useBrochure";
 import BrochurePage from "./BrochurePage";
-import CoverPage from "./CoverPage";
-import GiftSelectionPage from "./GiftSelectionPage";
+import EnvelopeLanding from "./EnvelopeLanding";
 import GospelPage from "./GospelPage";
 import PurityPage from "./PurityPage";
 import SharePage from "./SharePage";
@@ -37,17 +36,10 @@ export default function Brochure({ senderName, receiverName }: BrochureProps) {
 
   const renderPage = () => {
     switch (currentPage) {
-      case "cover":
+      case "envelope":
         return (
-          <CoverPage
-            receiverName={receiverName}
+          <EnvelopeLanding
             senderName={senderName}
-            onOpenGift={() => goToPage("giftSelection", "forward")}
-          />
-        );
-      case "giftSelection":
-        return (
-          <GiftSelectionPage
             receiverName={receiverName}
             onSelectOption={selectOption}
           />
@@ -83,10 +75,16 @@ export default function Brochure({ senderName, receiverName }: BrochureProps) {
     }
   };
 
+  const showBackgroundRose = currentPage !== "envelope";
+
   return (
     <div className="w-full max-w-lg mx-auto perspective-1000">
       <AnimatePresence mode="wait" custom={direction}>
-        <BrochurePage key={currentPage} direction={direction}>
+        <BrochurePage
+          key={currentPage}
+          direction={direction}
+          showBackgroundRose={showBackgroundRose}
+        >
           {renderPage()}
         </BrochurePage>
       </AnimatePresence>

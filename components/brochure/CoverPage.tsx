@@ -16,69 +16,62 @@ export default function CoverPage({
   onOpenGift,
 }: CoverPageProps) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[600px] md:min-h-[700px] p-8 text-center">
-      <motion.div
-        initial={{ scale: 0, rotate: -180 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{ type: "spring", duration: 1, delay: 0.2 }}
-        className="mb-6"
-      >
-        <Image
-          src="/images/flower.svg"
-          alt="Valentine's Flower"
-          width={150}
-          height={150}
-          className="animate-float"
-        />
-      </motion.div>
+    <div className="relative flex flex-col items-center justify-center min-h-[600px] md:min-h-[700px] p-8 text-center overflow-hidden">
+      {/* Full-page rose background */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <motion.div
+          initial={{ scale: 1, opacity: 1 }}
+          animate={{ scale: 1, opacity: 0.6 }}
+          transition={{ duration: 1 }}
+          className="relative w-full h-full"
+        >
+          <Image
+            src="/images/rose.png"
+            alt=""
+            fill
+            className=""
+            priority
+          />
+        </motion.div>
+      </div>
 
+      {/* Content overlay with frosted glass backdrop */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="space-y-4"
+        className="relative z-10 bg-white/70 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg"
       >
-        <p className="text-rose-dark text-lg">A Special Valentine&apos;s Message</p>
+        <div className="space-y-4">
+          <p className="text-rose-dark text-lg font-medium tracking-wide text-shadow">
+            A Special Valentine&apos;s Message
+          </p>
 
-        <h1 className="text-4xl md:text-5xl font-serif text-foreground">
-          Dear {receiverName},
-        </h1>
+          <h1 className="text-4xl md:text-5xl font-serif text-foreground text-shadow-strong">
+            Dear {receiverName},
+          </h1>
 
-        <p className="text-foreground/70 text-lg max-w-md mx-auto">
-          You have received a heartfelt gift from{" "}
-          <span className="text-rose-dark font-medium">{senderName}</span>
-        </p>
+          <p className="text-foreground/80 text-lg max-w-md mx-auto text-shadow">
+            You have received a heartfelt gift from{" "}
+            <span className="text-rose-dark font-semibold">{senderName}</span>
+          </p>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="pt-6"
-        >
-          <Button size="lg" onClick={onOpenGift}>
-            <span className="mr-2">
-              <span role="img" aria-label="gift">
-                &#127873;
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9 }}
+            className="pt-6"
+          >
+            <Button size="lg" onClick={onOpenGift}>
+              <span className="mr-2">
+                <span role="img" aria-label="gift">
+                  &#127873;
+                </span>
               </span>
-            </span>
-            Open Your Gift
-          </Button>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-4 left-0 right-0 flex justify-center"
-      >
-        <Image
-          src="/images/heart.svg"
-          alt=""
-          width={24}
-          height={24}
-          className="animate-pulse-heart opacity-50"
-        />
+              Open Your Gift
+            </Button>
+          </motion.div>
+        </div>
       </motion.div>
     </div>
   );
