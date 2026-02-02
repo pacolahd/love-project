@@ -174,12 +174,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .envelope-seal {
   position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2.5rem;
+  top: 20px;
+  left: 40%;
+  transform: translateX(-40%);
   z-index: 20;
-  filter: drop-shadow(0 2px 4px rgba(225, 29, 72, 0.3));
+  filter: drop-shadow(0 4px 8px rgba(225, 29, 72, 0.4));
 }
 
 /* Letter Paper Styles */

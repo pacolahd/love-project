@@ -2,8 +2,10 @@
 
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Button from "../ui/Button";
 import FloatingArtifact from "./FloatingArtifact";
+import FloatingSideEmojis from "./FloatingSideEmojis";
 
 type AnimationPhase = "idle" | "opening" | "revealing" | "complete";
 
@@ -39,7 +41,10 @@ export default function EnvelopeLanding({
   const showButton = phase === "idle";
 
   return (
-    <div className="envelope-container">
+    <div className="envelope-container relative">
+      {/* Circling emojis around the container */}
+      <FloatingSideEmojis />
+
       {/* Header text - animates up when flap opens */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -144,7 +149,13 @@ export default function EnvelopeLanding({
                 },
               }}
             >
-              &#10084;
+              <Image
+                src="/images/teddy.png"
+                alt="Teddy bear seal"
+                width={60}
+                height={60}
+                className="object-contain"
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -177,7 +188,7 @@ export default function EnvelopeLanding({
             transition={{ duration: 0.5 }}
             className="mt-8 text-foreground/80 text-center text-lg md:text-xl font-medium"
           >
-            Choose a gift to discover your surprise
+            Tap the 🌹 or 💎 to chose your surprise
           </motion.p>
         )}
       </AnimatePresence>
